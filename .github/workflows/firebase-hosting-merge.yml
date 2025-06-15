@@ -9,6 +9,10 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bi_system  # Set default working directory for all run steps
+    
     steps:
       - uses: actions/checkout@v4
       
@@ -29,6 +33,7 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: bi_system/package-lock.json
       
       # Install npm dependencies
       - name: Install npm dependencies
@@ -45,3 +50,4 @@ jobs:
           firebaseToken: ${{ secrets.FIREBASE_TOKEN }}
           channelId: live
           projectId: sport-bi-system
+          entryPoint: ./bi_system  # Specify the directory containing firebase.json
