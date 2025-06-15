@@ -1,0 +1,21 @@
+{
+  "name": "sport-bi-system",
+  "version": "1.0.0",
+  "description": "Sport BI System - Analytics and Dashboard for Sports Teams",
+  "private": true,
+  "scripts": {
+    "build": "flutter build web",
+    "deploy": "firebase deploy --only hosting",
+    "test": "flutter test",
+    "lint": "flutter analyze"
+  },
+  "dependencies": {
+    "firebase-tools": "^13.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
