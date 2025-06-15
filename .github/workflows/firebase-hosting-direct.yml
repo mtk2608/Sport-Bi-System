@@ -1,5 +1,5 @@
-# This file was updated for Flutter web app deployment
-name: Deploy to Firebase Hosting on merge
+# Alternative workflow using firebase-tools directly
+name: Deploy to Firebase Hosting (direct)
 on:
   push:
     branches:
@@ -35,7 +35,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: bi_system/package-lock.json
       
-      # Install npm dependencies
+      # Install npm dependencies including firebase-tools
       - name: Install npm dependencies
         run: npm install
       
@@ -43,11 +43,8 @@ jobs:
       - name: Build Flutter web app
         run: flutter build web --release
       
-      # Deploy to Firebase Hosting
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          channelId: live
-          projectId: sport-bi-system
-          entryPoint: ./bi_system  # Specify the directory containing firebase.json
+      # Deploy to Firebase Hosting using firebase-tools directly
+      - name: Deploy to Firebase
+        run: npx firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
