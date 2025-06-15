@@ -31,6 +31,27 @@
 
   <title>bi_system</title>
   <link rel="manifest" href="manifest.json">
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"></script>
+  
+  <!-- Initialize Firebase -->
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAwGzdlhAhH5SQWkzyO9h42Fdg2GY_PGqY",
+      authDomain: "sport-bi-system.firebaseapp.com",
+      projectId: "sport-bi-system",
+      storageBucket: "sport-bi-system.firebasestorage.app",
+      messagingSenderId: "1043162107879",
+      appId: "1:1043162107879:web:af5786e794d5f84ad03742",
+      measurementId: "G-B4FWF2HE64"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>

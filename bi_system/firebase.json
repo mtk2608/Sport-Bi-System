@@ -1,0 +1,39 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "sport-bi-system",
+          "appId": "1:1043162107879:android:a90ecd802424f24bd03742",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "sport-bi-system",
+          "configurations": {
+            "android": "1:1043162107879:android:a90ecd802424f24bd03742",
+            "ios": "1:1043162107879:ios:b1876446ab57d231d03742",
+            "macos": "1:1043162107879:ios:b1876446ab57d231d03742",
+            "web": "1:1043162107879:web:af5786e794d5f84ad03742",
+            "windows": "1:1043162107879:web:e8fa2933be1e2444d03742"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "bi-system",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

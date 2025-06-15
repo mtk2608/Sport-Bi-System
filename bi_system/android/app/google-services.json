@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1043162107879",
+    "project_id": "sport-bi-system",
+    "storage_bucket": "sport-bi-system.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043162107879:android:a90ecd802424f24bd03742",
+        "android_client_info": {
+          "package_name": "com.example.bi_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUC285Ewm0UHV1oCQ64p8imYfLl-j0D6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
