@@ -19,7 +19,6 @@ class CollapsibleSidebar extends StatelessWidget {
     required this.onToggle,
     required this.currentPage,
   });
-
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
@@ -72,12 +71,11 @@ class CollapsibleSidebar extends StatelessWidget {
                 ],
               ],
             ),
-          ),
-          // Navigation items
+          ),          // Navigation items
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(vertical: 16),
-              children: [                _buildNavItem(
+              children: [_buildNavItem(
                   icon: Icons.home_outlined,
                   label: 'Home',
                   isSelected: currentPage == 'Home',
@@ -222,23 +220,34 @@ class CollapsibleSidebar extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const TrashPage()),
                     );
                   },
-                ),
-                const Spacer(),                // Sign out option
+                ),                // Add vertical spacing before sign out button
+                const SizedBox(height: 24),
+                // Sign out option
                 Container(
-                  margin: const EdgeInsets.all(8),
-                  child: _buildNavItem(
-                    icon: Icons.logout,
+                  margin: const EdgeInsets.only(top: 8, left: 8, right: 8),
+                  child: _buildNavItem(                    icon: Icons.logout,
                     label: 'Sign Out',
                     isSelected: false,
+                    showSeparator: true,
                     onTap: () async {
                       try {
                         final authService = AuthService();
                         await authService.signOut();
-                        // When signed out, the AuthWrapper will automatically navigate to the SignInPage
+                        
+                        // Navigate to the AuthWrapper which will redirect to sign in page
+                        if (context.mounted) {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context, 
+                            '/', 
+                            (route) => false,
+                          );
+                        }
                       } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Error signing out: ${e.toString()}')),
-                        );
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Error signing out: ${e.toString()}')),
+                          );
+                        }
                       }
                     },
                   ),
@@ -249,13 +258,12 @@ class CollapsibleSidebar extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Widget _buildNavItem({
+  }  Widget _buildNavItem({
     required IconData icon,
     required String label,
     required bool isSelected,
     required VoidCallback onTap,
+    bool showSeparator = false,
   }) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
@@ -269,6 +277,9 @@ class CollapsibleSidebar extends StatelessWidget {
             decoration: BoxDecoration(
               color: isSelected ? Colors.blue.withOpacity(0.1) : Colors.transparent,
               borderRadius: BorderRadius.circular(6),
+              border: showSeparator && isExpanded ? Border(
+                top: BorderSide(color: Colors.grey[200]!),
+              ) : null,
             ),
             child: Row(
               children: [
