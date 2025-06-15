@@ -26,12 +26,11 @@ jobs:
       # Install Flutter dependencies
       - name: Install Flutter dependencies
         run: flutter pub get
-      
-      # Set up Node.js
+        # Set up Node.js (v22 required for Firebase CLI v14.7.0+)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: bi_system/package-lock.json
       
